@@ -9,10 +9,8 @@ defmodule Auth.UserController do
     changeset = User.changeset(%User{}, params)
 
     if changeset.valid? do
-      Repo.insert!(changeset)
-
-      conn
-      |> send_resp(201, '')
+      user = Repo.insert!(changeset)
+      render conn, user: user
     else
       conn
       |> send_resp(400, '')

@@ -1,7 +1,8 @@
 defmodule Auth.UserView do
   use Auth.Web, :view
 
-  def render("show.json", %{user: user})
+  def render(name, %{user: user})
+  when name in ["show.json", "create.json"] do
     %{
       id: user.id,
       username: user.username,
