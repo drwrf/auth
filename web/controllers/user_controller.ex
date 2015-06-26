@@ -20,6 +20,7 @@ defmodule Auth.UserController do
   end
 
   def show(conn, %{"id" => id, "format" => format}) do
-    json conn, Repo.get_by(User, id: id)
+    user = Repo.get_by(User, id: id)
+    render conn, user: user
   end
 end
