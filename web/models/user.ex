@@ -1,6 +1,8 @@
 defmodule Auth.User do
   use Auth.Web, :model
 
+  alias Comeonin.Bcrypt
+
   schema "users" do
     field :username, :string
     field :email, :string
@@ -21,7 +23,18 @@ defmodule Auth.User do
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)
+    |> hash_password
     |> validate_username_or_email
+  end
+
+  def hash_password(changeset) do
+    password = get_field(changeset, :password)
+
+    if password do
+      changeset = put_change(changeset, :password, Bcrypt.hashpwsalt(password))
+    end
+
+    changeset
   end
 
   def validate_username_or_email(changeset) do
