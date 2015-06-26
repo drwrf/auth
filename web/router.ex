@@ -19,7 +19,7 @@ defmodule Auth.Router do
   end
 
   # Other scopes may use custom stacks.
-  scope "/api", Auth do
+  scope "/api", Auth.Api do
     pipe_through :api
 
     resources "/users", UserController, only: [:show, :create]

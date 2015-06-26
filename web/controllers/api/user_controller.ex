@@ -1,4 +1,4 @@
-defmodule Auth.UserController do
+defmodule Auth.Api.UserController do
   use Auth.Web, :controller
 
   alias Auth.User

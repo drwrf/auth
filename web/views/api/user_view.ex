@@ -1,4 +1,4 @@
-defmodule Auth.UserView do
+defmodule Auth.Api.UserView do
   use Auth.Web, :view
 
   def render(name, %{user: user})
