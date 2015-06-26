@@ -23,8 +23,8 @@ defmodule Auth.User do
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)
+    |> validate_identifier
     |> hash_password
-    |> validate_username_or_email
   end
 
   @doc """
@@ -43,7 +43,7 @@ defmodule Auth.User do
   @doc """
   Ensures that users specify either a username or an email in their payload.
   """
-  def validate_username_or_email(changeset) do
+  def validate_identifier(changeset) do
     # Users must specify either a username or an email
     if !get_field(changeset, :username) and !get_field(changeset, :email) do
       changeset = add_error(changeset, :username, 'username cannot be blank')
