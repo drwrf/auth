@@ -27,6 +27,9 @@ defmodule Auth.User do
     |> validate_username_or_email
   end
 
+  @doc """
+  Hashes an incoming password if one is passed in the changeset.
+  """
   def hash_password(changeset) do
     password = get_field(changeset, :password)
 
@@ -37,6 +40,9 @@ defmodule Auth.User do
     changeset
   end
 
+  @doc """
+  Ensures that users specify either a username or an email in their payload.
+  """
   def validate_username_or_email(changeset) do
     # Users must specify either a username or an email
     if !get_field(changeset, :username) and !get_field(changeset, :email) do
