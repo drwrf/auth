@@ -2,17 +2,20 @@ defmodule Auth.User do
   use Auth.Web, :model
 
   alias Comeonin.Bcrypt
+  alias Auth.App
 
   schema "users" do
     field :username, :string
     field :email, :string
     field :password, :string
 
+    belongs_to :app, App
+
     timestamps
   end
 
-  @required_fields ~w()
-  @optional_fields ~w(username email password)
+  @required_fields ~w(app_id password)
+  @optional_fields ~w(username email)
 
   @doc """
   Creates a changeset based on the `model` and `params`.
