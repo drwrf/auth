@@ -2,11 +2,14 @@ defmodule Auth.Api.UserController do
   use Auth.Web, :controller
 
   alias Auth.User
+  alias Auth.App
 
   plug :action
 
   def create(conn, params) do
-    changeset = User.changeset(%User{}, params)
+    changeset = User.changeset(%User{}, Map.merge(params, %{
+      "app_id" => conn.assigns.app.id
+    }))
 
     if changeset.valid? do
       user = Repo.insert!(changeset)
