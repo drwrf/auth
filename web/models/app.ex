@@ -40,7 +40,8 @@ defmodule Auth.App do
     end
 
     if Repo.get_by(__MODULE__, slug: slug) do
-      changeset = put_change(changeset, :slug, slug <> "-" <> SecureRandom.uuid().slice(0..2))
+      addition = SecureRandom.uuid() |> String.slice(0..2)
+      changeset = put_change(changeset, :slug, slug <> "-" <> addition)
       changeset = generate_slug(changeset)
     end
 
