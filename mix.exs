@@ -25,7 +25,8 @@ defmodule Auth.Mixfile do
         :phoenix_ecto,
         :postgrex,
         :comeonin,
-        :slugger
+        :slugger,
+        :secure_random
       ]
     ]
   end
@@ -46,7 +47,8 @@ defmodule Auth.Mixfile do
       {:phoenix_live_reload, "~> 0.4", only: :dev},
       {:cowboy, "~> 1.0"},
       {:comeonin, "~> 1.0"},
-      {:slugger, "0.0.1"}
+      {:slugger, "0.0.1"},
+      {:secure_random, "~> 0.1"}
    ]
   end
 end
