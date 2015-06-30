@@ -2,10 +2,13 @@ defmodule Auth.App do
   use Auth.Web, :model
 
   alias Auth.Repo
+  alias Auth.User
 
   schema "apps" do
     field :name, :string
     field :slug, :string
+
+    has_many :users, User
 
     timestamps
   end

@@ -23,8 +23,14 @@ defmodule Auth.Api.UserController do
     end
   end
 
-  def show(conn, %{"id" => id, "format" => format}) do
-    user = Repo.get_by(User, id: id)
+  def show(conn, %{
+    "id" => id,
+    "app" => app,
+    "format" => format
+  }) do
+    query = assoc(conn.assigns.app, :users)
+    user = Repo.get_by(query, id: id)
+
     render conn, user: user
   end
 end
