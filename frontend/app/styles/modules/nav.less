@@ -1,0 +1,39 @@
+.nav {
+  background: @gray-lightest;
+  position: fixed;
+  height: 100%;
+  width: 200px;
+}
+
+.nav-link {
+  display: block;
+  color: @gray-medium;
+  border-right: 10px solid @gray-lighter;
+  font-size: 18px;
+  padding: 15px;
+  cursor: pointer;
+
+  &.is-orgs {
+    .make-nav-link(@color-red);
+  }
+
+  &.is-users {
+    .make-nav-link(@color-green);
+  }
+
+  &.is-perms {
+    .make-nav-link(@color-blue);
+  }
+
+  &.is-settings {
+    .make-nav-link(@color-violet);
+  }
+}
+
+.make-nav-link(@color) {
+  &:hover,
+  &:active,
+  &.is-active {
+    border-right-color: @color;
+  }
+}
