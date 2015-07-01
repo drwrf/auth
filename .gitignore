@@ -8,6 +8,7 @@ erl_crash.dump
 
 # Static artifacts
 node_modules
+bower_components
 
 # Since we are building js and css from web/static,
 # we ignore priv/static/{css,js}. You may want to
@@ -22,3 +23,15 @@ priv/static/js
 # secrets file as long as you replace its contents by environment
 # variables.
 config/prod.secret.exs
+
+# compiled output
+dist
+tmp
+
+# misc
+.sass-cache
+connect.lock
+coverage/*
+libpeerconnection.log
+npm-debug.log
+testem.log
