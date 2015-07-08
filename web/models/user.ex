@@ -3,6 +3,7 @@ defmodule Auth.User do
 
   alias Comeonin.Bcrypt
   alias Auth.Org
+  alias Auth.Repo
 
   schema "users" do
     field :username, :string
@@ -27,6 +28,8 @@ defmodule Auth.User do
     model
     |> cast(params, @required_fields, @optional_fields)
     |> validate_identifier
+    |> validate_unique(:email, on: Repo)
+    |> validate_unique(:username, on: Repo)
     |> hash_password
   end
 
