@@ -1,39 +1,29 @@
 .nav {
-  background: @gray-lightest;
-  position: fixed;
-  height: 100%;
-  width: 200px;
+  background: @color-green;
+  overflow: hidden;
+  line-height: 60px;
+  height: 60px;
+  padding: 0 30px;
+}
+
+.nav-brand {
+  font-size: 24px;
+  color: white;
+}
+
+.nav-links {
+  float: right;
 }
 
 .nav-link {
+  float: left;
   display: block;
-  color: @gray-medium;
-  border-right: 10px solid @gray-lighter;
-  font-size: 18px;
-  padding: 15px;
+  color: fade(white, 75%);
+  font-size: 15px;
+  padding-left: 30px;
   cursor: pointer;
 
-  &.is-orgs {
-    .make-nav-link(@color-red);
-  }
-
-  &.is-users {
-    .make-nav-link(@color-green);
-  }
-
-  &.is-perms {
-    .make-nav-link(@color-blue);
-  }
-
-  &.is-settings {
-    .make-nav-link(@color-violet);
-  }
-}
-
-.make-nav-link(@color) {
-  &:hover,
-  &:active,
-  &.is-active {
-    border-right-color: @color;
+  &:hover {
+    color: white;
   }
 }
