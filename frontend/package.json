@@ -8,9 +8,10 @@
     "test": "tests"
   },
   "scripts": {
-    "start": "ember server",
+    "start": "ember server --proxy http://127.0.0.1:4000",
     "build": "ember build",
-    "test": "ember test"
+    "test": "ember test",
+    "postinstall": "bower install"
   },
   "repository": "",
   "engines": {
@@ -33,6 +34,7 @@
     "ember-cli-uglify": "^1.0.1",
     "ember-data": "1.0.0-beta.18",
     "ember-disable-proxy-controllers": "^1.0.0",
-    "ember-export-application-global": "^1.0.2"
+    "ember-export-application-global": "^1.0.2",
+    "bower": "1.4.1"
   }
 }

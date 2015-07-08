@@ -7,6 +7,6 @@ defmodule Mix.Tasks.Serve do
     Server.run(args)
 
     Mix.shell.info "Starting Ember frontend on port 4200"
-    Mix.shell.cmd "cd frontend && ember serve --proxy http://127.0.0.1:4000"
+    Mix.shell.cmd "cd frontend && npm start"
   end
 end
