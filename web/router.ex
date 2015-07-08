@@ -33,6 +33,6 @@ defmodule Auth.Router do
   scope "/api/:org", Auth.Api do
     pipe_through :org_api
 
-    resources "/users", UserController, only: [:show, :create]
+    resources "/users", UserController, only: [:create, :show, :index]
   end
 end

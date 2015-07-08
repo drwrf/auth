@@ -22,6 +22,13 @@ defmodule Auth.Api.UserController do
     end
   end
 
+  def index(conn, params) do
+    query = assoc(conn.assigns.org, :users)
+    users = Repo.paginate(query, params)
+
+    render conn, users: users
+  end
+
   def show(conn, %{
     "id" => id,
     "org" => _,
