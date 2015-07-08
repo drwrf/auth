@@ -13,5 +13,6 @@
   "poolboy": {:hex, :poolboy, "1.5.1"},
   "postgrex": {:hex, :postgrex, "0.8.4"},
   "ranch": {:hex, :ranch, "1.0.0"},
+  "scrivener": {:hex, :scrivener, "0.8.0"},
   "secure_random": {:hex, :secure_random, "0.1.1"},
   "slugger": {:hex, :slugger, "0.0.1"}}
