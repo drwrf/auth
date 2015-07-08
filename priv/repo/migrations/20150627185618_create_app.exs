@@ -8,6 +8,5 @@ defmodule Auth.Repo.Migrations.CreateApp do
 
       timestamps
     end
-
   end
 end

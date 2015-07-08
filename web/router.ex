@@ -12,9 +12,9 @@ defmodule Auth.Router do
     plug :accepts, ["json"]
   end
 
-  pipeline :app_api do
+  pipeline :org_api do
     plug :accepts, ["json"]
-    plug Auth.Plugs.App
+    plug Auth.Plugs.Org
   end
 
   scope "/", Auth do
@@ -27,11 +27,11 @@ defmodule Auth.Router do
   scope "/api", Auth.Api do
     pipe_through :api
 
-    resources "/apps", AppController, only: [:show, :create]
+    resources "/orgs", OrgController, only: [:show, :create]
   end
 
-  scope "/api/:app", Auth.Api do
-    pipe_through :app_api
+  scope "/api/:org", Auth.Api do
+    pipe_through :org_api
 
     resources "/users", UserController, only: [:show, :create]
   end

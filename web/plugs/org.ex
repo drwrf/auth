@@ -1,15 +1,15 @@
-defmodule Auth.Plugs.App do
+defmodule Auth.Plugs.Org do
   import Plug.Conn
 
-  alias Auth.App
+  alias Auth.Org
   alias Auth.Repo
 
   def init(_), do: nil
 
   def call(conn, _) do
-    case Repo.get_by(App, slug: conn.params["app"]) do
+    case Repo.get_by(Org, slug: conn.params["org"]) do
       nil -> conn |> send_resp(404, '') |> halt
-      app -> conn |> assign(:app, app)
+      org -> conn |> assign(:org, org)
     end
   end
 end

@@ -2,19 +2,19 @@ defmodule Auth.User do
   use Auth.Web, :model
 
   alias Comeonin.Bcrypt
-  alias Auth.App
+  alias Auth.Org
 
   schema "users" do
     field :username, :string
     field :email, :string
     field :password, :string
 
-    belongs_to :app, App
+    belongs_to :org, Org
 
     timestamps
   end
 
-  @required_fields ~w(app_id password)
+  @required_fields ~w(org_id password)
   @optional_fields ~w(username email)
 
   @doc """

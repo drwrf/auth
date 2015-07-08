@@ -1,10 +1,10 @@
-defmodule Auth.App do
+defmodule Auth.Org do
   use Auth.Web, :model
 
   alias Auth.Repo
   alias Auth.User
 
-  schema "apps" do
+  schema "orgs" do
     field :name, :string
     field :slug, :string
 
@@ -30,8 +30,8 @@ defmodule Auth.App do
   end
 
   @doc """
-  Generates a slug for the app record, so that users can refer
-  to their app by a pretty identifier, as opposed to some sort
+  Generates a slug for the org record, so that users can refer
+  to their org by a pretty identifier, as opposed to some sort
   of hard to read integer.
   """
   def generate_slug(changeset) do
