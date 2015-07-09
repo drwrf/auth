@@ -35,7 +35,7 @@ defmodule Auth.Api.UserController do
     "format" => _
   }) do
     query = assoc(conn.assigns.org, :users)
-    user = Repo.get_by(query, id: id)
+    user = Repo.get_by!(query, id: id)
 
     render conn, user: user
   end
@@ -46,7 +46,7 @@ defmodule Auth.Api.UserController do
     "format" => _
   }) do
     query = assoc(conn.assigns.org, :users)
-    user = Repo.get_by(query, id: id)
+    user = Repo.get_by!(query, id: id)
     user = %{user | is_deleted: true}
     Repo.update!(user)
 
