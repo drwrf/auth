@@ -3,13 +3,13 @@ defmodule Auth.Api.UserView do
 
   def render(name, %{user: user})
   when name in ["show.json", "create.json", "delete.json"] do
-    output user
+    serialize user
   end
 
   def render(name, %{users: users})
   when name in ["index.json"] do
     %{
-      users: (for user <- users.entries, do: output(user)),
+      users: (for user <- users.entries, do: serialize(user)),
       meta: %{
         page: users.page_number,
         page_size: users.page_size,
@@ -19,7 +19,7 @@ defmodule Auth.Api.UserView do
     }
   end
 
-  def output(user) do
+  def serialize(user) do
     %{
       id: user.id,
       username: user.username,
