@@ -24,5 +24,6 @@ defmodule Auth.Router do
 
     resources "/orgs", OrgController
     resources "/:org/users", UserController
+    resources "/:org/logins", LoginController
   end
 end
