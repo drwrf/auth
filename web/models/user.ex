@@ -9,6 +9,7 @@ defmodule Auth.User do
     field :username, :string
     field :email, :string
     field :password, :string
+    field :is_deleted, :boolean
 
     belongs_to :org, Org
 
