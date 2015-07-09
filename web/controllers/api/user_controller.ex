@@ -3,6 +3,7 @@ defmodule Auth.Api.UserController do
 
   alias Auth.User
 
+  plug Auth.Plugs.Org
   plug :action
 
   def create(conn, params) do

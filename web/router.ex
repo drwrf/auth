@@ -12,11 +12,6 @@ defmodule Auth.Router do
     plug :accepts, ["json"]
   end
 
-  pipeline :org_api do
-    plug :accepts, ["json"]
-    plug Auth.Plugs.Org
-  end
-
   scope "/", Auth do
     pipe_through :browser # Use the default browser stack
 
@@ -27,13 +22,7 @@ defmodule Auth.Router do
   scope "/api", Auth.Api do
     pipe_through :api
 
-    resources "/orgs", OrgController, only: [:show, :create]
-  end
-
-  scope "/api/:org", Auth.Api do
-    pipe_through :org_api
-
-    resources "/users", UserController, only: [
-      :create, :show, :index, :delete]
+    resources "/orgs", OrgController
+    resources "/:org/users", UserController
   end
 end
