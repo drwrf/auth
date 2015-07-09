@@ -39,4 +39,17 @@ defmodule Auth.Api.UserController do
 
     render conn, user: user
   end
+
+  def delete(conn, %{
+    "id" => id,
+    "org" => _,
+    "format" => _
+  }) do
+    query = assoc(conn.assigns.org, :users)
+    user = Repo.get_by(query, id: id)
+    user = %{user | is_deleted: true}
+    Repo.update!(user)
+
+    render conn, user: user
+  end
 end
