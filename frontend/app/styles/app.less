@@ -16,7 +16,13 @@
 @color-violet: #ae2ee4;
 
 body {
+  background: @gray-lightest;
+  border-top: 10px solid @color-green;
   font-family: 'Cabin';
   margin: 0;
   padding: 0;
+}
+
+.bottom-shadow() {
+  .box-shadow(0 1px 1px fade(black, 15%));
 }

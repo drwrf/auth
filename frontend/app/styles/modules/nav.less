@@ -1,5 +1,6 @@
 .nav {
-  background: @color-green;
+  border-bottom: 2px dotted @gray-lighter;
+  background: @gray-lightest;
   overflow: hidden;
   line-height: 60px;
   height: 60px;
@@ -8,7 +9,7 @@
 
 .nav-brand {
   font-size: 24px;
-  color: white;
+  color: @gray-medium;
 }
 
 .nav-links {
@@ -16,14 +17,24 @@
 }
 
 .nav-link {
+  .bottom-shadow();
   float: left;
   display: block;
-  color: fade(white, 75%);
+  color: @gray-medium;
   font-size: 15px;
-  padding-left: 30px;
   cursor: pointer;
+  line-height: 30px;
+  text-decoration: none;
+  padding: 0 15px;
+  margin: 15px 0;
+
 
   &:hover {
     color: white;
+  }
+
+  &.active {
+    .border-radius(60px);
+    background: white;
   }
 }
