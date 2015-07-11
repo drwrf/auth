@@ -37,7 +37,7 @@ defmodule Auth.User do
   @doc """
   Hashes an incoming password if one is passed in the changeset.
   """
-  def hash_password(changeset) do
+  defp hash_password(changeset) do
     password = get_field(changeset, :password)
 
     if password do
@@ -50,7 +50,7 @@ defmodule Auth.User do
   @doc """
   Ensures that users specify either a username or an email in their payload.
   """
-  def validate_identifier(changeset) do
+  defp validate_identifier(changeset) do
     # Users must specify either a username or an email
     if !get_field(changeset, :username) and !get_field(changeset, :email) do
       changeset = add_error(changeset, :username, 'username cannot be blank')
