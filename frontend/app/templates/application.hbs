@@ -1,13 +1,25 @@
 <nav class="nav">
-  <a class="nav-brand">
-    Auth
-  </a>
+  <div class="container">
+    <div class="col-group">
+      <div class="col-mb-12">
+        <a class="nav-brand">
+          Auth
+        </a>
 
-  <div class="nav-links">
-    {{#link-to 'users' class="nav-link"}}
-      Users
-    {{/link-to}}
+        <div class="nav-links">
+          {{#link-to 'users' class="nav-link"}}
+            Users
+          {{/link-to}}
+        </div>
+      </div>
+    </div>
   </div>
 </nav>
 
-{{outlet}}
+<div class="container">
+  <div class="col-group">
+    <div class="col-mb-12">
+      {{outlet}}
+    </div>
+  </div>
+</div>
