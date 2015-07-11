@@ -41,14 +41,7 @@ defmodule Auth.Api.LoginController do
   end
 
   defp check_password(conn, user, params) do
-    valid = case [user, params["password"]] do
-      [%User{}, pw] when is_binary(pw) ->
-        Bcrypt.checkpw(pw, user.password)
-      _ ->
-        Bcrypt.dummy_checkpw
-    end
-
-    case valid do
+    case User.valid_password?(user, params) do
       false -> conn |> send_resp(400, '') |> halt
       true  -> conn
     end

@@ -35,6 +35,18 @@ defmodule Auth.User do
   end
 
   @doc """
+  Checks a password against a user to see if it's valid.
+  """
+  def valid_password?(user, password) do
+    case [user, password] do
+      [%__MODULE__{}, pw] when is_binary(pw) ->
+        Bcrypt.checkpw(password, user.password)
+      _ ->
+        Bcrypt.dummy_checkpw
+    end
+  end
+
+  @doc """
   Hashes an incoming password if one is passed in the changeset.
   """
   defp hash_password(changeset) do
